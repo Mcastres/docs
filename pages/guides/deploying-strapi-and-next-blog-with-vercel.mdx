@@ -1,0 +1,63 @@
+import Guide from '~/components/layout/guide'
+import Snippet from '~/components/snippet'
+import { InlineCode } from '~/components/text/code'
+import Caption from '~/components/text/caption'
+import { Image } from '~/components/media'
+import DeploySection from '~/components/guides/deploy-section'
+import NameWrapper from '~/components/name/name-wrapper'
+import ProductName from '~/components/name/product-name'
+import { PRODUCT_NAME } from '~/lib/constants'
+
+export const meta = {
+  title: `Deploying a Strapi and Next.js blog with ${PRODUCT_NAME}`,
+  description: `Deploy your blog using Strapi and Next.js with ${PRODUCT_NAME}.`,
+  name: 'Strapi',
+  type: 'app',
+  published: '2020-04-29T12:00:00.860Z',
+  authors: ['mcastres'],
+  url: '/guides/deploying-strapi-next-blog-with-vercel',
+  image: `https://og-image.now.sh/Deploy%20a%20Strapi%20and%20Next.js%20blog%20with%20Vercel.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-black.svg&images=https%3A%2F%2Fcamo.githubusercontent.com%2Fdf21cbd8be3b9cb0143244035d768cdd077b0a33%2F68747470733a2f2f626c6f672e7374726170692e696f2f636f6e74656e742f696d616765732f323031372f31302f6c6f676f2e706e67`,
+  editUrl: 'pages/guides/deploying-strapi-next-blog-with-vercel.mdx',
+  lastEdited: '2020-04-29T00:32:18.000Z'
+}
+
+## Step 1: Deploy Your Strapi Instance
+
+To deploy your Strapi instance you'll need:
+
+  - [A Heroku account](https://signup.heroku.com/) for free
+  - [A Cloudinary account for saving images](https://cloudinary.com/users/register/free) for free
+
+You'll need a Cloudinary account as Heroku filesystem is not permanent
+
+Once you have created these accounts you can deploy your instance by clicking this button
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/strapi/strapi-starter-next-blog)
+
+## Step 2: Deploy Your Next.js frontend with <NameWrapper name={PRODUCT_NAME} />
+
+  - Log in to Vercel by installing Now CLI:
+
+  `npm i -g now`
+
+  - Secure your `API_URL` with Now by running the following command:
+
+  `now secret add api-url <https://your-strapi-instance.herokuapp.com>`
+
+**Note** Your `API_URL` cannot contain a trailing slash
+
+You can deploy your app in two different ways, but both of them work simply by pressing enter when asked for the root directory for your code.
+
+  - Run `now` in your terminal
+
+  - Click on the button below and follow the steps when prompted
+
+[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/new/project?template=https://github.com/strapi/strapi-starter-next-blog)
+
+<DeploySection meta={meta} />
+
+export default ({ children }) => <Guide meta={meta}>{children}</Guide>
+
+export const config = {
+  amp: 'hybrid'
+}
