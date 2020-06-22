@@ -28,7 +28,7 @@ if (global.document) {
   const info = [
     ...(process.env.NOW_GITHUB_COMMIT_SHA
       ? [
-          `Commit: https://github.com/zeit/docs/commit/${
+          `Commit: https://github.com/vercel/docs/commit/${
             process.env.NOW_GITHUB_COMMIT_SHA
           }`
         ]
@@ -80,6 +80,13 @@ class Head extends React.PureComponent {
     return (
       <>
         <NextHead>
+          <link
+            rel="preload"
+            href="https://assets.vercel.com/raw/upload/v1587415301/fonts/2/inter-var-latin.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
           <title>{titlePrefix + this.props.title + titleSuffix}</title>
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@zeithq" />
